@@ -1,0 +1,4 @@
+Lenguaje: Java
+Fuentes:
+  * https://docs.oracle.com/javase/specs/jls/se7/html/jls-3.html#jls-3.8 (identificadores)
+  * https://docs.oracle.com/javase/specs/jls/se7/html/jls-3.html#jls-3.9 (palabras reservadas)
