@@ -9,5 +9,5 @@ while(cont < a):
 	elif cont%3 == 0:
 		print "Fizz"
 	else: 
-print cont
+  print cont
 	cont = cont+1
