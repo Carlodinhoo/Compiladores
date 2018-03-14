@@ -9,3 +9,13 @@ avion
 Conejo
 and 
 1er
+.2145
+0.56
+<=
+==
++
+//
+/
+"HOLA MI NOMBRE ES JUAN &$%"
+"""
+"HOLA\"
