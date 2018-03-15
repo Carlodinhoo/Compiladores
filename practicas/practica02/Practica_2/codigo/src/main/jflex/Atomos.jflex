@@ -11,19 +11,32 @@ import java.util.Arrays;
 
 static Stack<Integer> pila = new Stack<Integer>();
 static int espacios=0;
+static int t;
+static boolean p = true;
+
 public static void recorre(int espa){
-
-    pila.push(espacios);
-
-while(!pila.isEmpty())
-    {  
-       int t= pila.pop();
-       System.out.println("Total de espacios"+t);
+    if(pila.empty()){
+        pila.push(espa);
+        System.out.print("IDENTACION "+pila.peek());
+    }else{
+        if(espa > pila.peek()){
+            int identacion = pila.push(espa);
+            System.out.print("IDENTACION "+identacion);
+        }else{
+            if(espa <= pila.peek()){
+                while(!pila.empty()){
+                        pila.pop();
+                    if(pila.empty()){
+                        System.out.print("Error");
+                    }
+                }
+            }
+            System.out.print("DEIDENTACION "+espa); 
+        }
+        
     }
-
+    espacios = 0;   
 }
-
-
 
 
 %}
