@@ -1,5 +1,6 @@
 package testmaven;
 import java.util.Stack;
+import java.util.Arrays;
 %%
 %class AnalizadorPython
 %public
@@ -7,11 +8,22 @@ import java.util.Stack;
 %unicode
 %{
 
+
 static Stack<Integer> pila = new Stack<Integer>();
 static int espacios=0;
 public static void recorre(int espa){
+
     pila.push(espacios);
+
+while(!pila.isEmpty())
+    {  
+       int t= pila.pop();
+       System.out.println("Total de espacios"+t);
+    }
+
 }
+
+
 
 
 %}
@@ -22,9 +34,11 @@ COMENTARIO = #.*
 FLOTANTE = [1-9][0-9]*\.[1-9][0-9]* | 0+\.[1-9][0-9]*
 OPERADORES= <|>|=|<=|>=|\+|\-|\*|\**|\/| \/\/|\=\=|\!|\%
 RESERVADA =and| as| assert| break |class| continue| def| del| elif| else| except| exec| finally| for |from |global |if |import |in |is |lambda| not| or| pass| print| raise| return| try |while |with |yield
-CADENA = \"(.*)\"
+CADENA ="\"" [^\\"\""]* "\""
 IDENTIFICADORES = ([A-Z]| [a-z])([A-Z]| [a-z]|[0-9])*
 SALTO = \n  
+SEPARADOR = \:
+BOOLEANO = True | False
 %%
 {ENTERO}      { System.out.print("ENTERO("+yytext() + ")"); }
 {COMENTARIO}      { System.out.print("COMENTARIO("+yytext() + ")"); }
@@ -36,6 +50,8 @@ SALTO = \n
 {SALTO}    { System.out.print("SALTO("+yytext() + ")");
                     yybegin(otro);}
 
+{SEPARADOR} { System.out.print("SEPARADOR(" + yytext() + ")"); }
+{BOOLEANO} { System.out.print("BOOLEANO(" + yytext() + ")"); }
 <otro>{
 " " {espacios++;}
 "/t" {espacios+=4;}
