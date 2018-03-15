@@ -16,39 +16,52 @@ static boolean p = true;
 
 public static void recorre(int espa){
     if(pila.empty()){
+        pila.push(0);
         pila.push(espa);
         System.out.print("IDENTACION "+pila.peek());
     }else{
         if(espa > pila.peek()){
             int identacion = pila.push(espa);
-            System.out.print("IDENTACION "+identacion);
+            System.out.print("IDENTACION("+identacion+")");
         }else{
-            if(espa <= pila.peek()){
-                while(!pila.empty()){
-                        pila.pop();
-                    if(pila.empty()){
-                        System.out.print("Error");
-                    }
+            while (espa < pila.peek()){
+                int deindenta = pila.pop();
+                System.out.print("DEINDENTA("+deindenta +")");
+                if (pila.peek() == 0 && espa !=0){
+                    System.out.print("Error de identacion");
                 }
+                
             }
-            System.out.print("DEIDENTACION "+espa); 
+            if (espa == pila.peek()){
+                    System.out.print("Existe bloque de identacion ("+espa+")");
+                }
+            
+            
         }
-        
     }
     espacios = 0;   
 }
 
 
+
 %}
+%eof{
+    while(!pila.empty()){
+        int pop = pila.pop();
+        System.out.print("DEIDENTA("+pop+")");
+    }
+    
+    
+%eof}
 %x otro
 PUNTO   = \.
 ENTERO  = [1-9][0-9]* | 0+
 COMENTARIO = #.*
 FLOTANTE = [1-9][0-9]*\.[1-9][0-9]* | 0+\.[1-9][0-9]*
-OPERADORES= <|>|=|<=|>=|\+|\-|\*|\**|\/| \/\/|\=\=|\!|\%
+OPERADORES= <|>|=|<=|>=|\+|\-|\*|\**|\/| \/\/|\=\=|\!|\%|\+\=|\-\=
 RESERVADA =and| as| assert| break |class| continue| def| del| elif| else| except| exec| finally| for |from |global |if |import |in |is |lambda| not| or| pass| print| raise| return| try |while |with |yield
 CADENA ="\"" [^\\"\""]* "\""
-IDENTIFICADORES = ([A-Z]| [a-z])([A-Z]| [a-z]|[0-9])*
+IDENTIFICADORES = ([A-Z]| [a-z])([A-Z]| [a-z]|[0-9] | "_")*
 SALTO = \n  
 SEPARADOR = \:
 BOOLEANO = True | False
@@ -68,8 +81,9 @@ BOOLEANO = True | False
 <otro>{
 " " {espacios++;}
 "/t" {espacios+=4;}
-. {yybegin(YYINITIAL);
-  recorre(espacios);}
+.   {yypushback(1);
+    yybegin(YYINITIAL);
+    recorre(espacios);}
 }
 .             { }
 
