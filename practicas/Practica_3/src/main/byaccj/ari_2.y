@@ -13,33 +13,34 @@
 input : E {$$ = Integer.toString($1); System.out.println("[OK] "+ $$ );          }
 ;
 
-E : T {$$ = $1;}
-  | T N{$$ = $1 + $2;}
+E : T {$$ = $1; dump_stacks(stateptr);}
+  | T N{$$ = $1 + $2;dump_stacks(stateptr);}
   
 ;
 
-N : MAS E {$$ = $2;}
-    | MENOS E {$$ = $2*-1;}
-    | MAS E N {$$ = $2 + $3;}
-    | MENOS E N {$$ = ($2 + $3)*-1;}
+N : MAS E {$$ = $2;dump_stacks(stateptr);}
+    | MENOS E {$$ = $2*-1;dump_stacks(stateptr);}
+    | MAS E N {$$ = $2 + $3;dump_stacks(stateptr);}
+    | MENOS E N {$$ = ($2 + $3)*-1;dump_stacks(stateptr);}
 ;
 
-T : F {$$ = $1;}
-    | F M {$$ = $1 * $2;}
-    | F D {$$ = $1 / $2;}
+T : F {$$ = $1;dump_stacks(stateptr);}
+    | F M {$$ = $1 * $2;dump_stacks(stateptr);}
+    | F D {$$ = $1 / $2;dump_stacks(stateptr);}
 ;
 
-M : MULT T {$$ = $2;}
-    | MULT T M {$$ = $2 * $3;}
+M : MULT T {$$ = $2;dump_stacks(stateptr);}
+    | MULT T M {$$ = $2 * $3;dump_stacks(stateptr);}
     
 ;
 
-D : DIV T {$$ = $2;}
-    | DIV T D {$$ = $2 / $3;}
+D : DIV T {$$ = $2;dump_stacks(stateptr);}
+    | DIV T D {if ($3 != 0 ){$$ = $2 / $3;} else {yyerror("Div 0");}dump_stacks(stateptr);}
+              
 ;
 
-F : MENOS ENTERO  {$$ = $2 * -1; }
-    |ENTERO {$$ = $1;}
+F : MENOS ENTERO  {$$ = $2 * -1; dump_stacks(stateptr);}
+    |ENTERO {$$ = $1;dump_stacks(stateptr);}
 ;
 %%
 

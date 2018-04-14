@@ -17,7 +17,7 @@ package asintactico;
 
 
 
-//#line 2 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 2 "src/main/byaccj/ari_1.y"
   import java.lang.Math;
   import java.io.*;
 //#line 20 "Parser.java"
@@ -296,7 +296,7 @@ final static String yyrule[] = {
 "F : MENOS ENTERO",
 };
 
-//#line 29 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 29 "src/main/byaccj/ari_1.y"
 
 /* Referencia a analizador léxico */
 private Nodos lexer;
@@ -483,39 +483,39 @@ boolean doaction;
       {
 //########## USER-SUPPLIED ACTIONS ##########
 case 1:
-//#line 13 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 13 "src/main/byaccj/ari_1.y"
 {yyval.sval = Integer.toString(val_peek(0).ival); System.out.println("[OK] "+ yyval.sval  );}
 break;
 case 2:
-//#line 15 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 15 "src/main/byaccj/ari_1.y"
 {yyval.ival = val_peek(2).ival + val_peek(0).ival; dump_stacks(stateptr);}
 break;
 case 3:
-//#line 16 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 16 "src/main/byaccj/ari_1.y"
 {yyval.ival = val_peek(2).ival - val_peek(0).ival; dump_stacks(stateptr);}
 break;
 case 4:
-//#line 17 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 17 "src/main/byaccj/ari_1.y"
 {yyval.ival = val_peek(0).ival; dump_stacks(stateptr);}
 break;
 case 5:
-//#line 20 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 20 "src/main/byaccj/ari_1.y"
 {yyval.ival = val_peek(2).ival * val_peek(0).ival; dump_stacks(stateptr);}
 break;
 case 6:
-//#line 21 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 21 "src/main/byaccj/ari_1.y"
 {if (val_peek(0).ival != 0 ){yyval.ival = val_peek(2).ival / val_peek(0).ival;} else {yyerror("Div 0"); dump_stacks(stateptr);}}
 break;
 case 7:
-//#line 22 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 22 "src/main/byaccj/ari_1.y"
 {yyval.ival = val_peek(0).ival; dump_stacks(stateptr);}
 break;
 case 8:
-//#line 25 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 25 "src/main/byaccj/ari_1.y"
 {yyval.ival = val_peek(0).ival;  dump_stacks(stateptr);}
 break;
 case 9:
-//#line 26 "/Users/juan/Desktop/Practica_03/Compiladores7008-master-1c096afec760cae7ded4c90cc800154069454446/Practicas/Practica_3/src/main/byaccj/ari_1.y"
+//#line 26 "src/main/byaccj/ari_1.y"
 {yyval.ival = val_peek(0).ival*-1; dump_stacks(stateptr);}
 break;
 //#line 444 "Parser.java"

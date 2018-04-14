@@ -10,42 +10,21 @@
 
 /*Gramatica recursiva 1 por la izquierda*/
 %%
-input : E {$$ = Integer.toString($1); System.out.println("[OK] "+ $$ );          }
+input: E {$$ = Integer.toString($1); System.out.println("[OK] "+ $$  );};
+
+E : E MAS T   {$$ = $1 + $3; dump_stacks(stateptr);}
+  | E MENOS T  {$$ = $1 - $3; dump_stacks(stateptr);}
+  | T          {$$ = $1; dump_stacks(stateptr);}
 ;
-/*
-  E: 	T {$$ = $1; }
-  	|E MAS T {$$ = $1 + $3; }
-        |E MAS E2 T {$$ = $1 + $3 + ;}
-  ;
 
-  N:	E MAS {$$ = $1; }
-  	|E MENOS {$$ = $1*-1; }
-  	|N E MAS {$$ = $1 + $2; }
-  	|N E MENOS {$$ = ($1 + $2)*-1; }
-  ;
+T : T MULT F {$$ = $1 * $3; dump_stacks(stateptr);}
+  | T DIV F  {if ($3 != 0 ){$$ = $1 / $3;} else {yyerror("Div 0"); dump_stacks(stateptr);}}
+  | F        {$$ = $1; dump_stacks(stateptr);}
+;
 
-  T: F {$$ = $1; }
-  	|M F {$$ = $1 * $2; }
-        |D F {$$ = $1 / $2; } 
-  ;
+F : ENTERO         {$$ = $1;  dump_stacks(stateptr);}
+   | MENOS ENTERO  {$$ = $2*-1; dump_stacks(stateptr);}
 
-  M:	T MULT {$$ = $1; }
-        | M T MULT {$$ = $1 * $2 ; }
-  ;
-
-  D:    T DIV {$$ = $1; }
-  	|D T DIV {$$ = $1 / $2; }
-  ;
-
-  F: MENOS ENTERO {$$ = $2 * -1; }
-  	| ENTERO {$$ = $1; }
-  ;
-*/
-
-
-
-
-    
 %%
 
 /* Referencia a analizador léxico */
