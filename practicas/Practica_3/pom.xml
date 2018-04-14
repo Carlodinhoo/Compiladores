@@ -40,13 +40,13 @@
             <goals>
               <goal>exec</goal>
             </goals>
+            <configuration>
+                <workingDirectory>${project.basedir}/target/generated-sources/jflex/asintactico</workingDirectory>
+                <executable>yacc.macosx</executable>
+                <commandlineArgs>-Jpackage=asintactico ${project.basedir}/src/main/byaccj/ari_1.y</commandlineArgs>
+            </configuration>
           </execution>
         </executions>
-        <configuration>
-          <workingDirectory>target/generated-sources/jflex/asintactico</workingDirectory>
-          <executable>yacc.macosx</executable>
-          <commandlineArgs>-Jpackage=asintactico ../../../../src/main/byaccj/ari.y</commandlineArgs>
-        </configuration>
       </plugin>
 
       <plugin>

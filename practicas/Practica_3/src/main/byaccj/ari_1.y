@@ -5,42 +5,47 @@
 
 %token<ival> NODO ENTERO 
 %token MAS MENOS MULT DIV 
-%type<ival> Lista, E, N, M, T, F, D 
+%type<ival> Lista, E, N, M, T, F, D ,C
 %type<sval> input
 
-/*Gramatica recursiva 2 por la derecha*/
+/*Gramatica recursiva 1 por la izquierda*/
 %%
 input : E {$$ = Integer.toString($1); System.out.println("[OK] "+ $$ );          }
 ;
+/*
+  E: 	T {$$ = $1; }
+  	|E MAS T {$$ = $1 + $3; }
+        |E MAS E2 T {$$ = $1 + $3 + ;}
+  ;
 
-E : T {$$ = $1;}
-  | T N{$$ = $1 + $2;}
-  
-;
+  N:	E MAS {$$ = $1; }
+  	|E MENOS {$$ = $1*-1; }
+  	|N E MAS {$$ = $1 + $2; }
+  	|N E MENOS {$$ = ($1 + $2)*-1; }
+  ;
 
-N : MAS E {$$ = $2;}
-    | MENOS E {$$ = $2*-1;}
-    | MAS E N {$$ = $2 + $3;}
-    | MENOS E N {$$ = ($2 + $3)*-1;}
-;
+  T: F {$$ = $1; }
+  	|M F {$$ = $1 * $2; }
+        |D F {$$ = $1 / $2; } 
+  ;
 
-T : F {$$ = $1;}
-    | F M {$$ = $1 * $2;}
-    | F D {$$ = $1 / $2;}
-;
+  M:	T MULT {$$ = $1; }
+        | M T MULT {$$ = $1 * $2 ; }
+  ;
 
-M : MULT T {$$ = $2;}
-    | MULT T M {$$ = $2 * $3;}
+  D:    T DIV {$$ = $1; }
+  	|D T DIV {$$ = $1 / $2; }
+  ;
+
+  F: MENOS ENTERO {$$ = $2 * -1; }
+  	| ENTERO {$$ = $1; }
+  ;
+*/
+
+
+
+
     
-;
-
-D : DIV T {$$ = $2;}
-    | DIV T D {$$ = $2 / $3;}
-;
-
-F : MENOS ENTERO  {$$ = $2 * -1; }
-    |ENTERO {$$ = $1;}
-;
 %%
 
 /* Referencia a analizador léxico */

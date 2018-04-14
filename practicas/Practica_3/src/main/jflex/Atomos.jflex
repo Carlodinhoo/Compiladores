@@ -7,18 +7,26 @@ package asintactico;
     	   this(r);
     	   parser = p;
     }
+
 %}
 %class Nodos
 %standalone
 %public
 %unicode
 ENTERO  = [1-9][0-9]* | 0+
-OPERADORES= \+|\*|\/
-MENOS = \-
+MAS= \+
+MULT= \*
+DIV= \/
+MENOS =\-
 %%
 
 a             { parser.yylval = new ParserVal(yytext()); return parser.NODO; }
-{ENTERO}             { parser.yylval = new ParserVal(yytext()); return parser.ENTERO; }
-{OPERADORES}             { parser.yylval = new ParserVal(yytext()); return parser.OPERADORES; }
+{ENTERO}   {  parser.yylval = new ParserVal(Integer.parseInt(yytext()) );
+          return parser.ENTERO ; 
+       }
+{MAS}             { parser.yylval = new ParserVal(yytext()); return parser.MAS; }
 {MENOS}             { parser.yylval = new ParserVal(yytext()); return parser.MENOS; }
+{MULT}             { parser.yylval = new ParserVal(yytext()); return parser.MULT; }
+{DIV}             { parser.yylval = new ParserVal(yytext()); return parser.DIV; }
+
 .             { }
