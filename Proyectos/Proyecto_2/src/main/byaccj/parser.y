@@ -3,7 +3,11 @@
   import java.io.*;
 %}
 
-%token IDENTIFICADOR ENTERO REAL BOOLEANO
+%token IDENTIFICADOR ENTERO REAL CADENA IDENTIFIER
+%token IDENT DEIDENTA OR AND NOT 
+%token NEWLINE IGUAL PRINT IF DOSPUNTOS ELSE WHILE
+%token MENOR MAYOR IGUALIGUAL DISTINTO MAS MENOS POR MODULO DIV POTENCIA
+%token PARENTESIS1 PARENTESIS2 RETURN MAYORIGUAL MENORIGUAL BOOLEAN
 
 /* Gramática con recursión izquierda */
 %%
@@ -13,8 +17,8 @@ input : atom  { System.out.println("[OK] ");}
 ffile_input: file_input  { System.out.println("[OK] ");}
 ;
 
-file_input: SALTO 
-          | file_input SALTO 
+file_input: NEWLINE 
+          | file_input NEWLINE 
           | stmt 
           | test
 
@@ -23,7 +27,7 @@ file_input: SALTO
 stmt: simple_stmt 
     | compound_stmt;
 
-simple_stmt: small_stmt SALTO;
+simple_stmt: small_stmt NEWLINE;
 
 small_stmt: expr_stmt 
     | print_stmt
@@ -36,13 +40,13 @@ compound_stmt: if_stmt
              | while_stmt
 ;
 
-if_stmt: IF test DOSPUNTOS suite [ELSE DOSPUNTOS suite];
+if_stmt: IF test DOSPUNTOS suite ELSE DOSPUNTOS suite;
 
 while_stmt: WHILE test DOSPUNTOS suite
 ;
 
 suite: simple_stmt 
-        | SALTO INDENTA stmt aux0 DEINDENTA
+        | NEWLINE INDENTA stmt aux0 DEINDENTA
 ;
 
 /*Primer auxiliar  para + en suite*/

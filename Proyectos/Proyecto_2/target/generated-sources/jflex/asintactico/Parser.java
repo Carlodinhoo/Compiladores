@@ -17,7 +17,7 @@ package asintactico;
 
 
 
-//#line 2 "/Users/juan/Desktop/Proyecto_compiladores/Compiladores7008/Proyectos/Proyecto_2/src/main/byaccj/parser.y"
+//#line 2 "/Users/juan/Documents/Repositorio/Compiladores/Proyectos/Proyecto_2/src/main/byaccj/parser.y"
   import java.lang.Math;
   import java.io.*;
 //#line 20 "Parser.java"
@@ -161,46 +161,134 @@ final ParserVal dup_yyval(ParserVal val)
 public final static short IDENTIFICADOR=257;
 public final static short ENTERO=258;
 public final static short REAL=259;
-public final static short BOOLEANO=260;
+public final static short CADENA=260;
+public final static short IDENTIFIER=261;
+public final static short IDENT=262;
+public final static short DEIDENTA=263;
+public final static short OR=264;
+public final static short AND=265;
+public final static short NOT=266;
+public final static short NEWLINE=267;
+public final static short IGUAL=268;
+public final static short PRINT=269;
+public final static short IF=270;
+public final static short DOSPUNTOS=271;
+public final static short ELSE=272;
+public final static short WHILE=273;
+public final static short MENOR=274;
+public final static short MAYOR=275;
+public final static short IGUALIGUAL=276;
+public final static short DISTINTO=277;
+public final static short MAS=278;
+public final static short MENOS=279;
+public final static short POR=280;
+public final static short MODULO=281;
+public final static short DIV=282;
+public final static short POTENCIA=283;
+public final static short PARENTESIS1=284;
+public final static short PARENTESIS2=285;
+public final static short RETURN=286;
+public final static short MAYORIGUAL=287;
+public final static short MENORIGUAL=288;
+public final static short BOOLEAN=289;
+public final static short INDENTA=290;
+public final static short DEINDENTA=291;
+public final static short aux5=292;
+public final static short DIVENTERA=293;
 public final static short YYERRCODE=256;
 final static short yylhs[] = {                           -1,
-    0,    1,    1,    1,    1,
+    0,    2,    3,    3,    3,    3,    4,    4,    6,    8,
+    8,    9,   10,    7,    7,   11,   12,   13,   13,   14,
+   14,    5,   15,   15,   17,   17,   16,   16,   19,   19,
+   18,   18,   20,   20,   22,   22,   23,   23,   23,   23,
+   23,   23,   21,   21,   25,   25,   25,   25,   24,   24,
+   27,   27,   27,   27,   27,   27,   27,   26,   26,   26,
+   28,   28,    1,    1,    1,    1,    1,
 };
 final static short yylen[] = {                            2,
-    1,    1,    1,    1,    1,
+    1,    1,    1,    2,    1,    1,    1,    1,    2,    1,
+    1,    3,    2,    1,    1,    7,    4,    1,    5,    1,
+    2,    1,    1,    2,    2,    3,    1,    2,    2,    3,
+    2,    1,    1,    2,    2,    3,    1,    1,    1,    1,
+    1,    1,    1,    2,    2,    2,    3,    3,    1,    2,
+    2,    2,    2,    2,    3,    3,    3,    2,    2,    1,
+    1,    3,    1,    1,    1,    1,    3,
 };
 final static short yydefred[] = {                         0,
-    2,    3,    4,    5,    0,    1,
+   63,   64,   65,    0,   66,    0,    1,    0,    0,    0,
+    0,    0,   22,    0,    0,   32,    0,    0,    0,   60,
+   31,   58,   59,    0,   67,    0,    0,    0,    0,   37,
+   38,   39,   42,   40,   41,   34,    0,    0,    0,   44,
+   50,   62,   25,    0,   29,    0,    0,    0,    0,   26,
+   30,   36,   47,   48,
 };
-final static short yydgoto[] = {                          5,
-    6,
+final static short yydgoto[] = {                          6,
+   11,    0,    0,    0,   12,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,   13,   14,   27,   15,   29,   16,
+   17,   36,   37,   18,   40,   19,    0,   20,
 };
-final static short yysindex[] = {                      -257,
-    0,    0,    0,    0,    0,    0,
+final static short yysindex[] = {                      -250,
+    0,    0,    0, -256,    0,    0,    0, -256, -253, -253,
+ -251, -255,    0, -229, -217,    0, -159, -264, -236,    0,
+    0,    0,    0, -253,    0, -256, -215, -256, -208,    0,
+    0,    0,    0,    0,    0,    0, -253, -253, -253,    0,
+    0,    0,    0, -256,    0, -256, -159, -264, -264,    0,
+    0,    0,    0,    0,
 };
 final static short yyrindex[] = {                         0,
-    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+ -224,    0,    0, -227, -243,    0, -248, -199, -205,    0,
+    0,    0,    0,    0,    0,    0, -223,    0, -240,    0,
+    0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,    0, -218, -180, -174,    0,
+    0,    0,    0,    0,
 };
 final static short yygindex[] = {                         0,
-    0,
+   79,    0,    0,    0,    0,    0,    0,    0,    0,    0,
+    0,    0,    0,    0,    0,  -15,    0,   -8,    0,    0,
+   44,   40,    0,  -20,   -5,    3,    0,    0,
 };
-final static int YYTABLESIZE=3;
+final static int YYTABLESIZE=129;
 static short yytable[];
 static { yytable();}
 static void yytable(){
-yytable = new short[]{                          1,
-    2,    3,    4,
+yytable = new short[]{                         21,
+    1,    2,    3,    1,    2,    3,    1,    2,    3,    8,
+   43,   22,   23,   38,   39,   33,   33,   48,   49,   45,
+   27,    9,   10,   28,    9,   10,   42,    4,   50,   25,
+    4,   24,    5,    4,   26,    5,   33,   51,    5,   61,
+   61,   27,   53,   54,   28,   35,   35,   28,   44,   61,
+   61,   61,   61,   61,   61,   41,   46,   23,   49,   49,
+   61,   24,   61,   61,   43,   43,   35,   61,   49,   49,
+   49,   49,   49,   49,   43,   43,   43,   43,    7,   49,
+   47,   49,   49,   45,   45,   43,   52,   43,   43,   46,
+   46,    0,    0,   45,   45,   45,   45,    0,    0,   46,
+   46,   46,   46,    0,   45,    0,   45,   45,    0,    0,
+   46,    0,   46,   46,   30,   31,   32,   33,    0,    0,
+    0,    0,    0,    0,    0,    0,    0,   34,   35,
 };
 }
 static short yycheck[];
 static { yycheck(); }
 static void yycheck() {
-yycheck = new short[] {                        257,
-  258,  259,  260,
+yycheck = new short[] {                          8,
+  257,  258,  259,  257,  258,  259,  257,  258,  259,  266,
+   26,    9,   10,  278,  279,  264,  265,   38,   39,   28,
+  264,  278,  279,  264,  278,  279,   24,  284,   44,  285,
+  284,  283,  289,  284,  264,  289,  285,   46,  289,  264,
+  265,  285,   48,   49,  285,  264,  265,  265,  264,  274,
+  275,  276,  277,  278,  279,  292,  265,  285,  264,  265,
+  285,  285,  287,  288,  264,  265,  285,  292,  274,  275,
+  276,  277,  278,  279,  274,  275,  276,  277,    0,  285,
+   37,  287,  288,  264,  265,  285,   47,  287,  288,  264,
+  265,   -1,   -1,  274,  275,  276,  277,   -1,   -1,  274,
+  275,  276,  277,   -1,  285,   -1,  287,  288,   -1,   -1,
+  285,   -1,  287,  288,  274,  275,  276,  277,   -1,   -1,
+   -1,   -1,   -1,   -1,   -1,   -1,   -1,  287,  288,
 };
 }
-final static short YYFINAL=5;
-final static short YYMAXTOKEN=260;
+final static short YYFINAL=6;
+final static short YYMAXTOKEN=293;
 final static String yyname[] = {
 "end-of-file",null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
@@ -218,18 +306,84 @@ null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
 null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,
-null,null,null,"IDENTIFICADOR","ENTERO","REAL","BOOLEANO",
+null,null,null,"IDENTIFICADOR","ENTERO","REAL","CADENA","IDENTIFIER","IDENT",
+"DEIDENTA","OR","AND","NOT","NEWLINE","IGUAL","PRINT","IF","DOSPUNTOS","ELSE",
+"WHILE","MENOR","MAYOR","IGUALIGUAL","DISTINTO","MAS","MENOS","POR","MODULO",
+"DIV","POTENCIA","PARENTESIS1","PARENTESIS2","RETURN","MAYORIGUAL","MENORIGUAL",
+"BOOLEAN","INDENTA","DEINDENTA","aux5","DIVENTERA",
 };
 final static String yyrule[] = {
 "$accept : input",
 "input : atom",
+"ffile_input : file_input",
+"file_input : NEWLINE",
+"file_input : file_input NEWLINE",
+"file_input : stmt",
+"file_input : test",
+"stmt : simple_stmt",
+"stmt : compound_stmt",
+"simple_stmt : small_stmt NEWLINE",
+"small_stmt : expr_stmt",
+"small_stmt : print_stmt",
+"expr_stmt : test IGUAL test",
+"print_stmt : PRINT test",
+"compound_stmt : if_stmt",
+"compound_stmt : while_stmt",
+"if_stmt : IF test DOSPUNTOS suite ELSE DOSPUNTOS suite",
+"while_stmt : WHILE test DOSPUNTOS suite",
+"suite : simple_stmt",
+"suite : NEWLINE INDENTA stmt aux0 DEINDENTA",
+"aux0 : stmt",
+"aux0 : aux0 stmt",
+"test : or_test",
+"or_test : and_test",
+"or_test : and_test aux1",
+"aux1 : OR and_test",
+"aux1 : aux1 OR and_test",
+"and_test : not_test",
+"and_test : not_test aux2",
+"aux2 : AND not_test",
+"aux2 : aux2 AND not_test",
+"not_test : NOT not_test",
+"not_test : comparison",
+"comparison : expr",
+"comparison : expr aux3",
+"aux3 : comp_op expr",
+"aux3 : comp_op expr aux3",
+"comp_op : MENOR",
+"comp_op : MAYOR",
+"comp_op : IGUALIGUAL",
+"comp_op : MAYORIGUAL",
+"comp_op : MENORIGUAL",
+"comp_op : DISTINTO",
+"expr : term",
+"expr : term aux4",
+"aux4 : MAS term",
+"aux4 : MENOS term",
+"aux4 : MAS term aux4",
+"aux4 : MENOS term aux4",
+"term : factor",
+"term : factor aux5",
+"aux9 : POR factor",
+"aux9 : DIVENTERA factor",
+"aux9 : MODULO factor",
+"aux9 : DIV factor",
+"aux9 : aux5 POR factor",
+"aux9 : aux5 MODULO factor",
+"aux9 : aux5 DIV factor",
+"factor : MAS factor",
+"factor : MENOS factor",
+"factor : power",
+"power : atom",
+"power : atom POTENCIA factor",
 "atom : IDENTIFICADOR",
 "atom : ENTERO",
 "atom : REAL",
-"atom : BOOLEANO",
+"atom : BOOLEAN",
+"atom : PARENTESIS1 test PARENTESIS2",
 };
 
-//#line 19 "/Users/juan/Desktop/Proyecto_compiladores/Compiladores7008/Proyectos/Proyecto_2/src/main/byaccj/parser.y"
+//#line 136 "/Users/juan/Documents/Repositorio/Compiladores/Proyectos/Proyecto_2/src/main/byaccj/parser.y"
 /* Referencia a analizador léxico */
 private Flexer lexer;
 
@@ -261,7 +415,7 @@ public static void main(String args[]) throws IOException {
     parser.yydebug = true;
     parser.yyparse();
 }
-//#line 192 "Parser.java"
+//#line 346 "Parser.java"
 //###############################################################
 // method: yylexdebug : check lexer state
 //###############################################################
@@ -416,10 +570,14 @@ boolean doaction;
       {
 //########## USER-SUPPLIED ACTIONS ##########
 case 1:
-//#line 10 "/Users/juan/Desktop/Proyecto_compiladores/Compiladores7008/Proyectos/Proyecto_2/src/main/byaccj/parser.y"
+//#line 14 "/Users/juan/Documents/Repositorio/Compiladores/Proyectos/Proyecto_2/src/main/byaccj/parser.y"
 { System.out.println("[OK] ");}
 break;
-//#line 345 "Parser.java"
+case 2:
+//#line 17 "/Users/juan/Documents/Repositorio/Compiladores/Proyectos/Proyecto_2/src/main/byaccj/parser.y"
+{ System.out.println("[OK] ");}
+break;
+//#line 503 "Parser.java"
 //########## END OF USER-SUPPLIED ACTIONS ##########
     }//switch
     //#### Now let's reduce... ####

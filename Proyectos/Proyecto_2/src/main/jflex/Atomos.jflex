@@ -2,12 +2,14 @@
 **  Analizador léxico para p, subconjunto de Python.	                       **
 *********************************************************************************/
 package asintactico;
+import java.util.Stack;
+import java.util.Arrays;
 %%
 %public
 %class Flexer
 %debug
 %byaccj
-%state NORMAL 
+%state NORMAL
 %line
 %unicode
 %{
@@ -62,15 +64,10 @@ package asintactico;
 
 PUNTO         =	\.
 DIGIT         = [0-9]
-RESERVADA     = ("and" | "from" | "not" | "while" | "for" |  "elif" | "or" | "else" | "if" | "print" | "return")
 CERO          = 0+
 ENTERO        = {CERO} | {DIGIT}+
 REAL          = {ENTERO}? {PUNTO} {ENTERO}?
-NEWLINE       = "\n"
 IDENTIFIER    = ([:letter:] | "_")([:letter:] | "_" | [0-9])*
-CHAR_LITERAL  = ([:letter:] | [:digit:] | "_" | "$" | " " | "#" | {OPERADOR} | {SEPARADOR})
-OPERADOR      = ("+" | "-" | "*" | "**" | "/" | "//" | "%" | "<" | ">" | "<=" | "+=" | "-=" | ">=" | "==" | "!=" | "<>" | "=" )			
-SEPARADOR     = ("(" | ")" | ":"  | ";" )
 BOOLEAN      = ("True" | "False")
 REAL          = {ENTERO}? \. {ENTERO}?
 %%
@@ -87,44 +84,28 @@ REAL          = {ENTERO}? \. {ENTERO}?
   "/"                               {return Parser.DIV;}
   "%"                               {return Parser.MODULO;}
   "**"                              {return Parser.POTENCIA;}
-
-  "+="                              {return Parser.MASIGUAL;}
-  "-="                              {return Parser.MENOSIGUAL;}
-  "="                               {return Parser.EQ;}
-
-  ";"                               {return Parser.PYCOMA;}
+    
   ":"                               {return Parser.DOSPUNTOS;}
-  "("                           {return Parser.PARENTESIS1;}
-  ")"                           {return Parser.PARENTESIS2;}
+  "("                               {return Parser.PARENTESIS1;}
+  ")"                               {return Parser.PARENTESIS2;}
 
 
   "or"                              {return Parser.OR;}
   "and"                             {return Parser.AND;}
-  "not in"                          {return Parser.NOTIN;}
   "not"                             {return Parser.NOT;}
   {BOOLEAN}                         {return Parser.BOOLEAN;}
-  "<"                               {return Parser.MENOR;}
-  ">"                               {return Parser.MAYOR;}
   "=="                              {return Parser.IGUALIGUAL;}
   ">="                              {return Parser.MAYORIGUAL;}
   "<="                              {return Parser.MENORIGUAL;}
   "!="                              {return Parser.DISTINTO;}
-  "in"                              {return Parser.IN;}
 
   "print"                           {return Parser.PRINT;}
   "return"                           {return Parser.RETURN;}
-  "for"                           {return Parser.FOR;}
   "if"                              {return Parser.IF;}
   "else"                            {return Parser.ELSE;}
-  "elif"                            {return Parser.ELIF;}
   "while"                           {return Parser.WHILE;}
 
   {IDENTIFIER}                      {return Parser.IDENTIFIER;}
-
-  {SALTO}                         {yybegin(INDENT);
-                                     actual = 0;
-                                     return Parser.SALTO;}
-  " "                               { }
 }
 
 
