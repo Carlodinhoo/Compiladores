@@ -86,7 +86,6 @@ REAL          = {ENTERO}? \. {ENTERO}?
   "*"                               {return Parser.POR;}
   "/"                               {return Parser.DIV;}
   "%"                               {return Parser.MODULO;}
-  "//"                              {return Parser.DIVENTERA;}
   "**"                              {return Parser.POTENCIA;}
 
   "+="                              {return Parser.MASIGUAL;}
@@ -122,9 +121,9 @@ REAL          = {ENTERO}? \. {ENTERO}?
 
   {IDENTIFIER}                      {return Parser.IDENTIFIER;}
 
-  {NEWLINE}                         {yybegin(INDENT);
+  {SALTO}                         {yybegin(INDENT);
                                      actual = 0;
-                                     return Parser.NEWLINE;}
+                                     return Parser.SALTO;}
   " "                               { }
 }
 

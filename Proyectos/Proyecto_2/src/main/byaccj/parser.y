@@ -10,10 +10,14 @@
 input : atom  { System.out.println("[OK] ");}
 ;
 
-atom: IDENTIFICADOR
-    | ENTERO
-    | REAL
-    | BOOLEANO
+ffile_input: file_input  { System.out.println("[OK] ");}
+;
+
+file_input: SALTO 
+          | file_input SALTO 
+          | stmt 
+          | test
+
 ;
 
 stmt: simple_stmt 
@@ -22,12 +26,108 @@ stmt: simple_stmt
 simple_stmt: small_stmt SALTO;
 
 small_stmt: expr_stmt 
-    | print_stmt;
+    | print_stmt
+;
 expr_stmt: test IGUAL test
-print_stmt: 'print' test
+print_stmt: PRINT test
+;
 
 compound_stmt: if_stmt
              | while_stmt
+;
+
+if_stmt: IF test DOSPUNTOS suite [ELSE DOSPUNTOS suite];
+
+while_stmt: WHILE test DOSPUNTOS suite
+;
+
+suite: simple_stmt 
+        | SALTO INDENTA stmt aux0 DEINDENTA
+;
+
+/*Primer auxiliar  para + en suite*/
+aux0: stmt
+      | aux0 stmt
+;
+
+test: or_test
+;
+
+or_test: and_test
+          | and_test aux1
+;
+aux1: OR and_test
+      | aux1 OR and_test
+;
+and_test: not_test
+          | not_test aux2
+;
+aux2: AND not_test
+      | aux2 AND not_test
+;
+not_test: NOT not_test
+          | comparison
+;
+
+comparison: expr
+            | expr aux3
+;
+
+aux3: comp_op expr
+      | comp_op expr aux3
+;
+
+comp_op: MENOR
+        | MAYOR
+        | IGUALIGUAL
+        | MAYORIGUAL
+        | MENORIGUAL
+        | DISTINTO
+;
+
+expr: term
+      | term aux4
+;
+
+aux4: MAS term
+      | MENOS term
+      | MAS term aux4
+      | MENOS term aux4
+;
+
+term: factor 
+        |factor aux5
+;
+
+aux9:  POR factor
+     | DIVENTERA factor
+     | MODULO factor
+     | DIV factor
+     | aux5 POR factor 
+     | aux5 MODULO factor
+     | aux5 DIV factor
+;
+
+
+factor: MAS factor
+	| MENOS factor
+	| power
+;
+
+power:  atom
+      | atom POTENCIA factor
+;
+
+
+atom: IDENTIFICADOR
+    | ENTERO
+    | REAL
+    | BOOLEAN
+    | PARENTESIS1 test PARENTESIS2
+;
+
+
+
 %%
 /* Referencia a analizador léxico */
 private Flexer lexer;
