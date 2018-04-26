@@ -3,18 +3,19 @@
   import java.io.*;
 %}
 
-%token IDENTIFICADOR ENTERO REAL CADENA IDENTIFIER
-%token IDENT DEIDENTA OR AND NOT 
+%token IDENTIFICADOR ENTERO REAL CADENA IDENTIFICADOR ENDMARKER DEDENT   INDENT
+%token   OR AND NOT 
 %token NEWLINE IGUAL PRINT IF DOSPUNTOS ELSE WHILE
 %token MENOR MAYOR IGUALIGUAL DISTINTO MAS MENOS POR MODULO DIV POTENCIA
 %token PARENTESIS1 PARENTESIS2 RETURN MAYORIGUAL MENORIGUAL BOOLEAN
 
 /* Gramática con recursión izquierda */
 %%
-input : atom  { System.out.println("[OK] ");}
-;
 
-ffile_input: file_input  { System.out.println("[OK] ");}
+
+file_input: NEWLINE file_input
+          | stmt file_input
+          |ENDMARKER
 ;
 
 file_input: NEWLINE 
@@ -46,7 +47,7 @@ while_stmt: WHILE test DOSPUNTOS suite
 ;
 
 suite: simple_stmt 
-        | NEWLINE INDENTA stmt aux0 DEINDENTA
+        | NEWLINE INDENT stmt aux0 DEDENT
 ;
 
 /*Primer auxiliar  para + en suite*/
@@ -103,8 +104,7 @@ term: factor
         |factor aux5
 ;
 
-aux9:  POR factor
-     | DIVENTERA factor
+aux5:  POR factor
      | MODULO factor
      | DIV factor
      | aux5 POR factor 
