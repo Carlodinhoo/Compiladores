@@ -142,7 +142,7 @@ NEWLINE       = "\n"
  "else"                           {return Parser.ELSE;}
  "while"                         {return Parser.WHILE;}
  {IDENTIFICADOR}        {return Parser.IDENTIFICADOR;}
-  {NEWLINE}                   { yybegin(INDENT); actual=0;}
+  {NEWLINE}                   { yybegin(INDENT); actual=0; return Parser.NEWLINE;}
 " " { }
 }
 <INDENT>{
@@ -169,13 +169,13 @@ NEWLINE       = "\n"
 }
 
 
-<<EOF>>                    {this.indentacion(0);
-                                     if(dedents > 0){
-                                      dedents--;
-                                      return Parser.DEDENT;
-                                     }else{
-                                      return 0;
-                                     }
-                                    }
+<<EOF>>                                   { this.indentacion(0);
+                                                     if(dedents > 0){
+			     dedents--;
+			     return Parser.DEDENT;
+			 }else{
+                                                                    return 0;
+                                                         }
+                                                        }
+.                           		 { return Parser.OTRO;}
 
-[^]           { }

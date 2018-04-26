@@ -43,7 +43,7 @@
             <configuration>
                 <workingDirectory>${project.basedir}/target/generated-sources/jflex/asintactico</workingDirectory>
                 <executable>yacc.macosx</executable>
-                <commandlineArgs>-Jpackage=asintactico ${project.basedir}/src/main/byaccj/parser.y</commandlineArgs>
+                <commandlineArgs>-v -Jpackage=asintactico ${project.basedir}/src/main/byaccj/parser.y</commandlineArgs>
             </configuration>
           </execution>
         </executions>

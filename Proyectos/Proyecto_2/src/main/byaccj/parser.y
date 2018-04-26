@@ -4,7 +4,7 @@
 %}
 
 %token IDENTIFICADOR ENTERO REAL CADENA IDENTIFICADOR ENDMARKER DEDENT   INDENT
-%token   OR AND NOT 
+%token   OR AND NOT  OTRO 
 %token NEWLINE IGUAL PRINT IF DOSPUNTOS ELSE WHILE
 %token MENOR MAYOR IGUALIGUAL DISTINTO MAS MENOS POR MODULO DIV POTENCIA
 %token PARENTESIS1 PARENTESIS2 RETURN MAYORIGUAL MENORIGUAL BOOLEAN
@@ -13,20 +13,22 @@
 %%
 
 
-file_input: NEWLINE file_input
-          | stmt file_input
-          |ENDMARKER
-;
+
 
 file_input: NEWLINE 
-          | file_input NEWLINE 
-          | stmt 
-          | test
+          |  NEWLINE  file_input
+          | stmt  file_input
+          | stmt
+
 
 ;
 
 stmt: simple_stmt 
-    | compound_stmt;
+    | compound_stmt
+    |OTRO
+    | stmt OTRO
+    
+    ;
 
 simple_stmt: small_stmt NEWLINE;
 
@@ -34,6 +36,9 @@ small_stmt: expr_stmt
     | print_stmt
 ;
 expr_stmt: test IGUAL test
+                    |test
+;
+                
 print_stmt: PRINT test
 ;
 
@@ -41,13 +46,15 @@ compound_stmt: if_stmt
              | while_stmt
 ;
 
-if_stmt: IF test DOSPUNTOS suite ELSE DOSPUNTOS suite;
+if_stmt: IF test DOSPUNTOS suite 
+            |IF test DOSPUNTOS suite ELSE DOSPUNTOS suite;
 
 while_stmt: WHILE test DOSPUNTOS suite
 ;
 
 suite: simple_stmt 
-        | NEWLINE INDENT stmt aux0 DEDENT
+        | NEWLINE INDENT  aux0 DEDENT
+        
 ;
 
 /*Primer auxiliar  para + en suite*/
@@ -127,6 +134,8 @@ atom: IDENTIFICADOR
     | ENTERO
     | REAL
     | BOOLEAN
+    | CADENA
+    |IGUAL
     | PARENTESIS1 test PARENTESIS2
 ;
 
