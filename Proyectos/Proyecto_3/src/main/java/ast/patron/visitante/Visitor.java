@@ -29,5 +29,9 @@ public interface Visitor
     public void visit(Nodo n);
     public void visit(NodoBinario n);
     public void visit(NodoStmts n);
+    public void visit(IfNodo n);
+    public void visit(WhileNodo n);
+    public void visit(ElseNodo n);
+    public void visit(DosPuntosNodo n);
     
 }

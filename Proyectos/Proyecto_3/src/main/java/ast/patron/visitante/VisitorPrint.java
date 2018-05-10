@@ -163,6 +163,7 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
+    
     public void visit(AsigNodo n){
         System.out.println("[=]");
         System.out.print("[");
@@ -171,8 +172,51 @@ public class VisitorPrint implements Visitor
         System.out.print("[");
         n.getUltimoHijo().accept(this);
         System.out.println("]");
+    }
+    
+    public void visit(IfNodo n){
+        System.out.println("[if]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
+    
+    public void visit(WhileNodo n){
+        System.out.println("[while]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
 
     }
+    
+    public void visit(ElseNodo n){
+        System.out.println("[else]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+
+    }
+    
+    public void visit(DosPuntosNodo n){
+        System.out.println("[:]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+
+    }
+    
     public void visit(Compuesto n){
         for (Iterator i = n.getHijos().iterator(); i.hasNext(); ) {
             Nodo hijo = (Nodo) i.next();
