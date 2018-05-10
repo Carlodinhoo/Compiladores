@@ -1,0 +1,15 @@
+ast/patron/compuesto/Nodo.class
+ast/patron/compuesto/Hoja.class
+ast/patron/compuesto/NodoBinario.class
+ast/patron/compuesto/Hijos.class
+ast/patron/compuesto/Variable.class
+ast/patron/visitante/VisitorPrint.class
+ast/patron/compuesto/NodoStmts.class
+ast/patron/compuesto/IdentifierHoja.class
+ast/patron/compuesto/AddNodo.class
+ast/patron/compuesto/AsigNodo.class
+ast/patron/visitante/Visitor.class
+ast/Flexer.class
+ast/patron/compuesto/DifNodo.class
+ast/patron/compuesto/IntHoja.class
+ast/patron/compuesto/Compuesto.class
