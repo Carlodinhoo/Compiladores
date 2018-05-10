@@ -5,7 +5,155 @@ import java.util.Iterator;
 
 public class VisitorPrint implements Visitor
 {
+    public void visit(MultNodo n){
+        System.out.println("[*]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
 
+        public void visit(PotNodo n){
+       System.out.println("[**]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+       }  
+        
+        
+        public void visit(AndNodo n){
+       System.out.println("[and]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+       
+    }   
+        
+     public void visit(OrNodo n){
+       System.out.println("[or]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+       
+    }
+     
+      public void visit(NotNodo n){
+       System.out.println("[not]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+       
+    }
+      
+      public void visit(ModNodo n){
+        System.out.println("[%]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
+      public void visit(MenorNodo n){
+        System.out.println("[<]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
+      
+      public void visit(MayorNodo n){
+        System.out.println("[<]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    } 
+      public void visit(MenorIgualNodo n){
+        System.out.println("[<=]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
+        public void visit(MayorIgualNodo n){
+        System.out.println("[>=]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
+        
+        public void visit(InNodo n){
+        System.out.println("[in]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
+       public void visit(IgualIgualNodo n){
+        System.out.println("[==]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
+        public void visit(MasIgualNodo n){
+        System.out.println("[+=]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
+       public void visit(DivNodo n){
+       System.out.println("[/]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+       
+    }
+       
+       public void visit(DivENodo n){
+       System.out.println("[//]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+       
+    }
     public void visit(AddNodo n){
         System.out.println("[+]");
         System.out.print("[");

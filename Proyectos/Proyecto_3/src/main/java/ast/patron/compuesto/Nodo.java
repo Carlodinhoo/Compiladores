@@ -3,6 +3,7 @@
  */
 package ast.patron.compuesto;
 import ast.patron.visitante.*;
+import java.util.ArrayList;
 
 public class Nodo
 {

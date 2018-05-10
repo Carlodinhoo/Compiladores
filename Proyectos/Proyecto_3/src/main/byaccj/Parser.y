@@ -63,12 +63,12 @@ simple_stmt: small_stmt SALTO {$$ = $1;}
 
 /* small_stmt: expr_stmt | print_stmt  */
 small_stmt: expr_stmt {$$ = $1;}
-          | print_stmt {}
+          | print_stmt {$$ = $1;}
 ;
 
 /* expr_stmt: test ['=' test] */
 expr_stmt: test {$$ = $1;}
-         | test EQ test {}
+         | test EQ test {$$ = new AsigNodo($1,$3);}
 ;
 
 /* print_stmt: 'print' test  */
@@ -114,12 +114,12 @@ aux4: expr comp_op {}
 ;
 
 /*    comp_op: '<'|'>'|'=='|'>='|'<='|'!=' */
-comp_op: LE {}
-       | GR {}
-       | EQUALS {}
-       | GRQ {}
-       | LEQ {}
-       | DIFF {}
+comp_op: LE {$$ = $1;}
+       | GR {$$ = $1;}
+       | EQUALS {$$ = $1;}
+       | GRQ {$$ = $1;}
+       | LEQ {$$ = $1;}
+       | DIFF {$$ = $1;}
 ;
 
 /*    expr: (term ('+'|'-'))* term   */
@@ -134,34 +134,34 @@ aux8: term MAS {$$ = new AddNodo($1,null);}
 
 /*   term: (factor ('*'|'/'|'%'|'//'))* factor   */
 term: factor {$$ = $1;}
-    | aux9 factor {}
+    | aux9 factor {$$ = $1; $$.agregaHijoFinal($2);}
 ;
-aux9: factor POR {}
-    | factor DIVENTERA {}
-    | factor MODULO {}
-    | factor DIV {}
-    | aux9 factor POR {}
-    | aux9 factor DIVENTERA {}
-    | aux9 factor MODULO {}
-    | aux9 factor DIV {}
+aux9: factor POR {$$ = new MultNodo($1,null);}
+    | factor DIVENTERA {$$ = new DivENodo($1,null);}
+    | factor MODULO {$$ = new ModNodo($1,null);}
+    | factor DIV {$$ = new DivNodo($1,null);}
+    | aux9 factor POR {$1.agregaHijoFinal($2); $$ = new MultNodo($1,null);}
+    | aux9 factor DIVENTERA {$1.agregaHijoFinal($2); $$ = new DivENodo($1,null);}
+    | aux9 factor MODULO {$1.agregaHijoFinal($2); $$ = new ModNodo($1,null);}
+    | aux9 factor DIV {$1.agregaHijoFinal($2); $$ = new DivNodo($1,null);}
 ;
 /* factor: ('+'|'-') factor | power */
-factor: MAS factor {}
-      | MENOS factor {}
+factor: MAS factor {$$ = new AddNodo(null,$1);}
+      | MENOS factor {$$ = new DifNodo(null,$1);}
       | power {$$ = $1;}
 ;
 /* power: atom ['**' factor] */
 power:  atom {$$ = $1;}
-      | atom POTENCIA factor {}
+      | atom POTENCIA factor {$$ = new PotNodo($1,$3);}
 ;
 
 /* atom: IDENTIFICADOR | ENTERO | CADENA | REAL | BOOLEANO | '(' test ')' */
 atom:  IDENTIFICADOR {$$ = $1;}
      | ENTERO {$$ = $1;}
-     | CADENA {}
-     | REAL {}
-     | BOOLEANO {}
-     | PA test PC {}
+     | CADENA {$$ = $1;}
+     | REAL {$$ = $1;}
+     | BOOLEANO {$$ = $1;}
+     | PA test PC {$$ = $2;}
 ;
 %%
 private Flexer lexer;
