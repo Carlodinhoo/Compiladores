@@ -102,9 +102,8 @@ BOOLEAN		        =	("True" | "False")
 }
 <CADENA>{
   {CHAR_LITERAL}+                         { cadena = yytext();}
-  \"					  { yybegin(CODIGO);
-                                            cadena = "";
-					    return Parser.CADENA;}
+  \"                    { yybegin(CODIGO); yyparser.yylval = new StringHoja(cadena); cadena = "";return Parser.CADENA;}
+
   {SALTO}				  { System.out.println("Unexpected newline. Line "+(yyline+1));
 					     System.exit(1);}
 }
@@ -137,10 +136,10 @@ BOOLEAN		        =	("True" | "False")
   "if"                                    { return Parser.IF;}
   "print"				  { return Parser.PRINT;}
   {SALTO}				  { yybegin(INDENTA); actual=0; return Parser.SALTO;}
-  {REAL}				  { return Parser.REAL;}
+  {REAL}				  { yyparser.yylval = new FloatHoja(Float.parseFloat(yytext())); return Parser.REAL;}
   {ENTERO}				  { yyparser.yylval = new IntHoja(Integer.parseInt(yytext()));
                                             return Parser.ENTERO; }
-  {BOOLEAN}                               { return Parser.BOOLEANO;}
+  {BOOLEAN}                               { yyparser.yylval = new BoolHoja(yytext());return Parser.BOOLEANO;}
   {IDENTIFIER}				  { yyparser.yylval = new IdentifierHoja(yytext()); return Parser.IDENTIFICADOR;}
   " "					  { }
 }

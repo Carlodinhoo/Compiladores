@@ -11,14 +11,14 @@ import ast.patron.visitante.*;
  *
  * @author hectorsama
  */
-public class StringHoja extends Hoja{
-    public StringHoja(String i){
-      	valor = new Variable(i);
-	tipo = 1;
+public class PrintnNodo   extends NodoBinario
+{
+
+    public PrintnNodo(Nodo l, Nodo r){
+	super(l,r);
     }
 
     public void accept(Visitor v){
      	v.visit(this);
     }
 }
-

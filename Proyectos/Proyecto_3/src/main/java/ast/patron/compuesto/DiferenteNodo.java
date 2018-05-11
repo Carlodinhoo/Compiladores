@@ -4,21 +4,20 @@
  * and open the template in the editor.
  */
 package ast.patron.compuesto;
-
 import ast.patron.visitante.*;
 
 /**
  *
  * @author hectorsama
  */
-public class StringHoja extends Hoja{
-    public StringHoja(String i){
-      	valor = new Variable(i);
-	tipo = 1;
+public class DiferenteNodo extends NodoBinario
+{
+
+    public DiferenteNodo(Nodo l, Nodo r){
+	super(l,r);
     }
 
     public void accept(Visitor v){
-     	v.visit(this);
+	v.visit(this);
     }
 }
-

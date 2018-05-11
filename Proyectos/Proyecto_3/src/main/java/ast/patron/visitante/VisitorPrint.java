@@ -58,7 +58,14 @@ public class VisitorPrint implements Visitor
         System.out.println("]");
        
     }
-      
+        public void visit(PrintnNodo n){
+        System.out.println("[print]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        
+    }
+
       public void visit(ModNodo n){
         System.out.println("[%]");
         System.out.print("[");
@@ -80,6 +87,26 @@ public class VisitorPrint implements Visitor
       
       public void visit(MayorNodo n){
         System.out.println("[<]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }   
+        public void visit(WhileNodo n){
+        System.out.println("[While]");
+        System.out.print("[Condition: ");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        System.out.print("[Do: ");
+        n.getUltimoHijo().accept(this);
+        System.out.println("]");
+    }
+
+      
+      public void visit(DiferenteNodo n){
+        System.out.println("[!=]");
         System.out.print("[");
         n.getPrimerHijo().accept(this);
         System.out.print("]");
@@ -163,7 +190,6 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
         System.out.println("]");
     }
-    
     public void visit(AsigNodo n){
         System.out.println("[=]");
         System.out.print("[");
@@ -172,51 +198,8 @@ public class VisitorPrint implements Visitor
         System.out.print("[");
         n.getUltimoHijo().accept(this);
         System.out.println("]");
-    }
-    
-    public void visit(IfNodo n){
-        System.out.println("[if]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
-        n.getUltimoHijo().accept(this);
-        System.out.println("]");
-    }
-    
-    public void visit(WhileNodo n){
-        System.out.println("[while]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
-        n.getUltimoHijo().accept(this);
-        System.out.println("]");
 
     }
-    
-    public void visit(ElseNodo n){
-        System.out.println("[else]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
-        n.getUltimoHijo().accept(this);
-        System.out.println("]");
-
-    }
-    
-    public void visit(DosPuntosNodo n){
-        System.out.println("[:]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        System.out.print("[");
-        n.getUltimoHijo().accept(this);
-        System.out.println("]");
-
-    }
-    
     public void visit(Compuesto n){
         for (Iterator i = n.getHijos().iterator(); i.hasNext(); ) {
             Nodo hijo = (Nodo) i.next();
@@ -233,6 +216,31 @@ public class VisitorPrint implements Visitor
         System.out.print("]");
         n.getUltimoHijo().accept(this);
     }
+    
+    public void visit(IfNodo n){
+        System.out.println("[if]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        n.getUltimoHijo().accept(this);
+    }
+    
+    public void visit(ElseNodo n){
+        System.out.println("[else]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        n.getUltimoHijo().accept(this);
+    }
+    
+    public void visit(DosPuntosNodo n){
+        System.out.println("[:]");
+        System.out.print("[");
+        n.getPrimerHijo().accept(this);
+        System.out.print("]");
+        n.getUltimoHijo().accept(this);
+    }
+    
     public void visit(Hoja n){
 
     }
@@ -242,6 +250,19 @@ public class VisitorPrint implements Visitor
     public void visit(IntHoja n){
 	System.out.print("[Hoja Entera] valor: " + n.getValor().ival);
     }
+
+
+     public void visit(FloatHoja n){
+        System.out.print("[Hoja Rela] valor: " + n.getValor().dval);
+    }
+     public void visit(StringHoja n){
+        System.out.print("[Hoja String] valor: " + n.getValor().sval);
+    }
+      public void visit(BoolHoja n){
+        System.out.print("[Hoja Boolean] valor: " + n.getValor().bval);
+    }
+
+
     public void visit(Nodo n){
 
     }

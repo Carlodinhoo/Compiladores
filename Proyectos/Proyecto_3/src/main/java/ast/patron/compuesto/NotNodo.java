@@ -11,13 +11,15 @@ import ast.patron.visitante.*;
  *
  * @author hectorsama
  */
-public class NotNodo extends NodoBinario{
+public class NotNodo extends Compuesto
+{
 
-    public NotNodo(Nodo l, Nodo r){
-	super(l,r);
+    public NotNodo(Nodo l){
+	super(l);
     }
 
     public void accept(Visitor v){
      	v.visit(this);
     }
 }
+

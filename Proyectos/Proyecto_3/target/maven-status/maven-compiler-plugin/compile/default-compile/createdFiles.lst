@@ -1,6 +1,5 @@
 ast/patron/compuesto/Nodo.class
 ast/patron/compuesto/Hoja.class
-ast/patron/visitante/VisitorPrint.class
 ast/patron/compuesto/DifNodo.class
 ast/patron/compuesto/Compuesto.class
 ast/patron/compuesto/NodoBinario.class

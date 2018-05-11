@@ -18,8 +18,13 @@ public interface Visitor
     public void visit(MayorIgualNodo n);
     public void visit(IgualIgualNodo n);
     public void visit(InNodo n);
+    public void visit(FloatHoja n);
     public void visit(MasIgualNodo n);
-    
+    public void visit(BoolHoja n);
+    public void visit(WhileNodo n);
+    public void visit(PrintnNodo n);
+    public void visit(StringHoja n);
+    public void visit(DiferenteNodo n);    
     public void visit(AsigNodo n);
     public void visit(Compuesto n);
     public void visit(DifNodo n);  //
@@ -30,8 +35,7 @@ public interface Visitor
     public void visit(NodoBinario n);
     public void visit(NodoStmts n);
     public void visit(IfNodo n);
-    public void visit(WhileNodo n);
-    public void visit(ElseNodo n);
     public void visit(DosPuntosNodo n);
+    public void visit(ElseNodo n);
     
 }

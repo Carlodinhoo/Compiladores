@@ -34,8 +34,8 @@ stmt: simple_stmt {$$ = $1;}
 ;
 
 /* compound_stmt: if_stmt | while_stmt */
-compound_stmt: if_stmt {}
-             | while_stmt {}
+compound_stmt: if_stmt {$$ = $1;}
+             | while_stmt {$$ = $1;}
 ;
 
 /* if_stmt: 'if' test ':' suite ['else' ':' suite] */
@@ -44,7 +44,7 @@ if_stmt:  IF test DOBLEPUNTO suite ELSE DOBLEPUNTO suite {}
 ;
 
 /*    while_stmt: 'while' test ':' suite */
-while_stmt: WHILE test DOBLEPUNTO suite {}
+while_stmt: WHILE test DOBLEPUNTO suite {$$ = new WhileNodo($2,$4);}
 ;
 
 /*    suite: simple_stmt | SALTO INDENTA stmt+ DEINDENTA */
@@ -68,11 +68,11 @@ small_stmt: expr_stmt {$$ = $1;}
 
 /* expr_stmt: test ['=' test] */
 expr_stmt: test {$$ = $1;}
-         | test EQ test {$$ = new AsigNodo($1,$3);}
+         | test EQ test {$$ = new AsigNodo($1, $3);}
 ;
 
 /* print_stmt: 'print' test  */
-print_stmt: PRINT test {}
+print_stmt: PRINT test {$$ = new PrintnNodo($2,null);}
 ;
 
 /*   test: or_test */
@@ -81,45 +81,45 @@ test: or_test {$$ = $1;}
 
 /*    or_test: (and_test 'or')* and_test  */
 or_test: and_test {$$ = $1;}
-       | aux2 and_test {}
+       | aux2 and_test {$$ = $1; $$.agregaHijoFinal($2);}
 ;
 /*    aux2: (and_test 'or')+  */
-aux2: and_test OR {}
-    | aux2 and_test OR {}
+aux2: and_test OR {$$ = new OrNodo($1, null);}
+    | aux2 and_test OR {$$ = $1; $3.agregaHijoPrincipio($2); $$.agregaHijoFinal($3);}
 ;
 
 /*    and_expr: (not_test 'and')* not_test */
 and_test: not_test {$$ = $1;}
-        | aux7 not_test {}
+        | aux7 not_test {$$ = $1; $$.agregaHijoFinal($2);}
 ;
 
 /*    and_expr: (not_test 'and')+ */
-aux7: not_test AND {}
-    | aux7 not_test AND {}
+aux7: not_test AND {$$ = new AndNodo($1, null);}
+    | aux7 not_test AND {$$ = $1; $3.agregaHijoPrincipio($2); $$.agregaHijoFinal($3);}
 ;
 
 /*    not_test: 'not' not_test | comparison */
-not_test: NOT not_test {}
+not_test: NOT not_test {$$ = new NotNodo($2);}
         | comparison {$$ = $1;}
 ;
 
 /*    comparison: (expr comp_op)* expr  */
 comparison: expr {$$ = $1;}
-          | aux4 expr {}
+          | aux4 expr {$$ = $1; $$.agregaHijoFinal($2);}
 ;
 
 /*    aux4: (expr comp_op)+  */
-aux4: expr comp_op {}
-    | aux4 expr comp_op {}
+aux4: expr comp_op {$$ = $2; $$.agregaHijoPrincipio($1);}
+    | aux4 expr comp_op {$$ = $1; $3.agregaHijoPrincipio($2); $$.agregaHijoFinal($3);}
 ;
 
 /*    comp_op: '<'|'>'|'=='|'>='|'<='|'!=' */
-comp_op: LE {$$ = $1;}
-       | GR {$$ = $1;}
-       | EQUALS {$$ = $1;}
-       | GRQ {$$ = $1;}
-       | LEQ {$$ = $1;}
-       | DIFF {$$ = $1;}
+comp_op: LE {$$ = new MenorNodo(null, null);}
+       | GR {$$ = new MayorNodo(null, null);}
+       | EQUALS {$$ = new IgualIgualNodo(null,null);}
+       | GRQ {$$ = new MayorIgualNodo (null, null);}
+       | LEQ {$$ = new MenorIgualNodo (null, null);}
+       | DIFF {$$ = new DiferenteNodo (null, null);}
 ;
 
 /*    expr: (term ('+'|'-'))* term   */

@@ -12,12 +12,12 @@ import ast.patron.visitante.Visitor;
  * @author juan
  */
 public class WhileNodo extends NodoBinario{
-
+    
     public WhileNodo(Nodo l, Nodo r){
-	super(l,r);
+        super(l,r);
     }
-
     public void accept(Visitor v){
      	v.visit(this);
     }
+    
 }
