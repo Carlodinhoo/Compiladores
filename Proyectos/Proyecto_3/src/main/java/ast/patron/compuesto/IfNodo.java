@@ -5,19 +5,32 @@
  */
 package ast.patron.compuesto;
 
-import ast.patron.visitante.Visitor;
+import ast.patron.visitante.*;
+import java.util.LinkedList;
 
 /**
  *
  * @author juan
  */
-public class IfNodo extends NodoBinario{
-    
-    public IfNodo(Nodo l, Nodo r){
-        super(l,r);
+public class IfNodo extends Compuesto
+{
+    //El compuesto esta contruido por Hijos
+    public IfNodo(){
+	super();
     }
+    
+    //Se obtine el total de hijos que estan en la lista tipo Nodo
+    public LinkedList<Nodo> getTotal(){
+        return hijos.getAll();
+    }
+    
+    //Obtenenmos el numero de hijos para saber en que caso va a entrar.
+    public int numeroHijos(){
+        return hijos.size();
+    }
+
     public void accept(Visitor v){
      	v.visit(this);
     }
-    
 }
+

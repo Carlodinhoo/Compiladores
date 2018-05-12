@@ -635,7 +635,7 @@ case 7:
 break;
 case 8:
 //#line 33 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
-{}
+{yyval = val_peek(0);}
 break;
 case 9:
 //#line 37 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
@@ -647,11 +647,11 @@ case 10:
 break;
 case 11:
 //#line 42 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
-{}
+{yyval = new IfNodo(); yyval.agregaHijoFinal(val_peek(5)); yyval.agregaHijoFinal(val_peek(3)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 12:
 //#line 43 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
-{}
+{yyval = new IfNodo(); yyval.agregaHijoFinal(val_peek(2)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 13:
 //#line 47 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"

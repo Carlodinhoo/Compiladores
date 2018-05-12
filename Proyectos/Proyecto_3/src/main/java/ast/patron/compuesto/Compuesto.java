@@ -13,7 +13,7 @@ public class Compuesto extends Nodo
     public Compuesto(Nodo l){
         hijos = new Hijos(l);
     }
-
+    
     public Nodo getPrimerHijo(){
 	return hijos.getPrimerHijo();
     }

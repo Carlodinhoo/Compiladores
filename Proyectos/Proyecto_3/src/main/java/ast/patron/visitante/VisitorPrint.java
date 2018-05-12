@@ -217,13 +217,32 @@ public class VisitorPrint implements Visitor
         n.getUltimoHijo().accept(this);
     }
     
-    public void visit(IfNodo n){
-        System.out.println("[if]");
-        System.out.print("[");
-        n.getPrimerHijo().accept(this);
-        System.out.print("]");
-        n.getUltimoHijo().accept(this);
+ public void visit(IfNodo n){
+        System.out.println("[If]");
+        //En el caso de que sean 3 "condition" "then" "else"
+        if(n.numeroHijos()==3){
+            LinkedList<Nodo> hijos = n.getTotal();
+            System.out.print("[Condition: ");
+            hijos.get(0).accept(this);
+            System.out.print("]");
+            System.out.print("[Then: ");
+            hijos.get(1).accept(this);
+            System.out.print("]");
+            System.out.print("[Else: ");
+            hijos.get(2).accept(this);
+            System.out.print("]");
+        }else{
+            //Cuando solo es "condition" y "then"
+            LinkedList<Nodo> hijos = n.getTotal();
+            System.out.print("[Condition: ");
+            hijos.get(0).accept(this);
+            System.out.print("]");
+            System.out.print("[Then: ");
+            hijos.get(1).accept(this);
+            System.out.print("]");
+        }
     }
+
     
     public void visit(ElseNodo n){
         System.out.println("[else]");
