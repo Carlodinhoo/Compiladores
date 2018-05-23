@@ -17,7 +17,7 @@ package ast;
 
 
 
-//#line 2 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 2 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
   import ast.patron.compuesto.*;
   import java.lang.Math;
   import java.io.*;
@@ -427,7 +427,7 @@ final static String yyrule[] = {
 "atom : PA test PC",
 };
 
-//#line 167 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 167 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 private Flexer lexer;
 /* Nodo Raiz del AST */
 public Nodo raíz;
@@ -610,283 +610,283 @@ boolean doaction;
       {
 //########## USER-SUPPLIED ACTIONS ##########
 case 1:
-//#line 20 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 20 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {raíz = yyval; System.out.println("Reconocimiento Exitoso");}
 break;
 case 2:
-//#line 21 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 21 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {raíz = val_peek(0); System.out.println("Reconocimiento Exitoso");}
 break;
 case 4:
-//#line 26 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 26 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new NodoStmts(val_peek(0));}
 break;
 case 5:
-//#line 27 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 27 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(1);}
 break;
 case 6:
-//#line 28 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 28 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {val_peek(1).agregaHijoFinal(val_peek(0)); yyval = val_peek(1);}
 break;
 case 7:
-//#line 32 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 32 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 8:
-//#line 33 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 33 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 9:
-//#line 37 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 37 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 10:
-//#line 38 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 38 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 11:
-//#line 42 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 42 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new IfNodo(); yyval.agregaHijoFinal(val_peek(5)); yyval.agregaHijoFinal(val_peek(3)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 12:
-//#line 43 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 43 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new IfNodo(); yyval.agregaHijoFinal(val_peek(2)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 13:
-//#line 47 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 47 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new WhileNodo(val_peek(2),val_peek(0));}
 break;
 case 14:
-//#line 51 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 51 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 15:
-//#line 52 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 52 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(1);}
 break;
 case 16:
-//#line 56 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 56 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new NodoStmts(val_peek(0));}
 break;
 case 17:
-//#line 57 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 57 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {val_peek(1).agregaHijoFinal(val_peek(0)); yyval = val_peek(1);}
 break;
 case 18:
-//#line 61 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 61 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(1);}
 break;
 case 19:
-//#line 65 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 65 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 20:
-//#line 66 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 66 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 21:
-//#line 70 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 70 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 22:
-//#line 71 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 71 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new AsigNodo(val_peek(2), val_peek(0));}
 break;
 case 23:
-//#line 75 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 75 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new PrintnNodo(val_peek(0),null);}
 break;
 case 24:
-//#line 79 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 79 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 25:
-//#line 83 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 83 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 26:
-//#line 84 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 84 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 27:
-//#line 87 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 87 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new OrNodo(val_peek(1), null);}
 break;
 case 28:
-//#line 88 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 88 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(2); val_peek(0).agregaHijoPrincipio(val_peek(1)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 29:
-//#line 92 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 92 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 30:
-//#line 93 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 93 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 31:
-//#line 97 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 97 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new AndNodo(val_peek(1), null);}
 break;
 case 32:
-//#line 98 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 98 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(2); val_peek(0).agregaHijoPrincipio(val_peek(1)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 33:
-//#line 102 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 102 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new NotNodo(val_peek(0));}
 break;
 case 34:
-//#line 103 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 103 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 35:
-//#line 107 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 107 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 36:
-//#line 108 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 108 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 37:
-//#line 112 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 112 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0); yyval.agregaHijoPrincipio(val_peek(1));}
 break;
 case 38:
-//#line 113 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 113 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(2); val_peek(0).agregaHijoPrincipio(val_peek(1)); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 39:
-//#line 117 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 117 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new MenorNodo(null, null);}
 break;
 case 40:
-//#line 118 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 118 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new MayorNodo(null, null);}
 break;
 case 41:
-//#line 119 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 119 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new IgualIgualNodo(null,null);}
 break;
 case 42:
-//#line 120 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 120 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new MayorIgualNodo (null, null);}
 break;
 case 43:
-//#line 121 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 121 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new MenorIgualNodo (null, null);}
 break;
 case 44:
-//#line 122 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 122 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new DiferenteNodo (null, null);}
 break;
 case 45:
-//#line 126 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 126 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 46:
-//#line 127 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 127 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 47:
-//#line 129 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 129 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new AddNodo(val_peek(1),null);}
 break;
 case 48:
-//#line 130 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 130 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new DifNodo(val_peek(1),null);}
 break;
 case 49:
-//#line 131 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 131 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new AddNodo(val_peek(2),null);}
 break;
 case 50:
-//#line 132 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 132 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new DifNodo(val_peek(2),null);}
 break;
 case 51:
-//#line 136 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 136 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 52:
-//#line 137 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 137 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(1); yyval.agregaHijoFinal(val_peek(0));}
 break;
 case 53:
-//#line 139 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 139 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new MultNodo(val_peek(1),null);}
 break;
 case 54:
-//#line 140 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 140 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new DivENodo(val_peek(1),null);}
 break;
 case 55:
-//#line 141 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 141 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new ModNodo(val_peek(1),null);}
 break;
 case 56:
-//#line 142 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 142 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new DivNodo(val_peek(1),null);}
 break;
 case 57:
-//#line 143 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 143 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new MultNodo(val_peek(2),null);}
 break;
 case 58:
-//#line 144 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 144 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new DivENodo(val_peek(2),null);}
 break;
 case 59:
-//#line 145 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 145 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new ModNodo(val_peek(2),null);}
 break;
 case 60:
-//#line 146 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 146 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {val_peek(2).agregaHijoFinal(val_peek(1)); yyval = new DivNodo(val_peek(2),null);}
 break;
 case 61:
-//#line 149 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 149 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new AddNodo(null,val_peek(1));}
 break;
 case 62:
-//#line 150 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 150 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new DifNodo(null,val_peek(1));}
 break;
 case 63:
-//#line 151 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 151 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 64:
-//#line 154 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 154 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 65:
-//#line 155 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 155 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = new PotNodo(val_peek(2),val_peek(0));}
 break;
 case 66:
-//#line 159 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 159 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 67:
-//#line 160 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 160 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 68:
-//#line 161 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 161 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 69:
-//#line 162 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 162 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 70:
-//#line 163 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 163 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(0);}
 break;
 case 71:
-//#line 164 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_3/src/main/byaccj/Parser.y"
+//#line 164 "/Users/hectorsama/Documents/Compiladores/Compiladores/Proyectos/Proyecto_4/src/main/byaccj/Parser.y"
 {yyval = val_peek(1);}
 break;
 //#line 824 "Parser.java"
