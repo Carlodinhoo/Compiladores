@@ -1,4 +1,4 @@
-package ast.patron.compuesto;
+package ast.patron.visitante;
 
 import java.util.Hashtable;
 

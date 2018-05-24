@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ast.patron.compuesto;
+package ast.patron.visitante;
 
 import java.util.ArrayList;
 
