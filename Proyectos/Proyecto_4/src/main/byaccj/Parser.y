@@ -85,7 +85,8 @@ or_test: and_test {$$ = $1;}
 ;
 /*    aux2: (and_test 'or')+  */
 aux2: and_test OR {$$ = new OrNodo($1, null);}
-    | aux2 and_test OR {$$ = $1; $3.agregaHijoPrincipio($2); $$.agregaHijoFinal($3);}
+    /*| aux2 and_test OR {$$ = $1; $3.agregaHijoPrincipio($2); $$.agregaHijoFinal($3);}*/
+    | aux2 and_test OR {$1.agregaHijoFinal($2); $$ = new OrNodo($1,null);}
 ;
 
 /*    and_expr: (not_test 'and')* not_test */
