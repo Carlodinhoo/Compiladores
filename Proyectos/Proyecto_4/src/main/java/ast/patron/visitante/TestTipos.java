@@ -77,7 +77,7 @@ public class TestTipos {
         {3, 3, 3, 3}
     };
 
-    /*"<" | ">" | "<=" |  ">=" | "==" | "!="  */
+    /*Tabla para "<" | ">" | "<=" |  ">=" | "==" | "!="  */
     int condiciones[][] = {{-1, -1, -1, -1},
         {-1, 0, 0, -1},
         {-1, 0, 0, -1},
@@ -95,6 +95,7 @@ public class TestTipos {
 
     //Tabla para la operacion  unaria
     private final int[] unarios = new int[]{1, 1, 2, -1};
+        //Tabla para la operacion not
     private final int[] not = new int[]{0, 0, 0, 0};
 /*Los siguientes metodos se utilizaran para acceder a la posicón de la matriz y obtener que tipos son.*/
     public int verificaAdd(int i, int j) {
@@ -136,7 +137,7 @@ public class TestTipos {
     public int verificaNot(int i) {
         return not[i];
     }
-        public int verificaU(int i) {
+        public int verificaUnario(int i) {
         return unarios[i];
     }
 

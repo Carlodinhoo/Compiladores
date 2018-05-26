@@ -20,21 +20,21 @@ public class VisitanteTipo implements Visitor {
     }
 
     public int visit(AddNodo n) {
-
-        if (n.getPrimerHijo() == null) {
-            int hd = tabla.get(n.getUltimoHijo().getType());
-            if (hd == 0) {
-
-                System.out.println("Invalido");
-            }
-            System.out.println("Los siguientes son validos:  " + this.valorTipo(n.getPrimerHijo().getType()) + "  y  " + this.valorTipo(n.getUltimoHijo().getType()));
-            int tipo1 = this.test_tipos.verificaU(hd);
-            return tipo1;
-        }
+        int tipo;
         int hijo_izquierdo = n.getPrimerHijo().accept(this);
         int hijo_derecho = n.getUltimoHijo().accept(this);
+
+        if (n.getPrimerHijo() == null) {
+            int hd = tabla.get(hijo_derecho);
+            if (hd == -1) {
+               // System.out.println("Invalido");
+            }
+             tipo = this.test_tipos.verificaUnario(hd);
+            return tipo;
+        }
+        
         System.out.println("Los siguientes son validos: " + this.valorTipo(hijo_izquierdo) + "  y  " + this.valorTipo(hijo_derecho));
-        int tipo = this.test_tipos.verificaAdd(hijo_izquierdo, hijo_derecho);
+         tipo = this.test_tipos.verificaAdd(hijo_izquierdo, hijo_derecho);
         //El valor de -1 es apartir de como definimos en la matriz de suma
         if (tipo == -1) {
             System.out.println("Error :  " + this.valorTipo(hijo_izquierdo) + " + " + this.valorTipo(hijo_derecho));
@@ -290,18 +290,18 @@ public class VisitanteTipo implements Visitor {
     }
 
     public int visit(AsigNodo n) {
-        int t = n.getUltimoHijo().accept(this);
+        int hijo_derecho = n.getUltimoHijo().accept(this);
         String id = n.getPrimerHijo().getNombre();
 
         if (this.tabla.get(id) == null) {
-            this.tabla.put(id, t);
+            this.tabla.put(id, hijo_derecho);
             return 0;
         }
 
-        int tab = this.tabla.get(id);
+        int t = this.tabla.get(id);
 
-        if (tab != t) {
-            System.out.println("Error :" + this.valorTipo(tab) + "  y  " + this.valorTipo(t));
+        if (t != hijo_derecho) {
+            System.out.println("Error :" + this.valorTipo(t) + "  y  " + this.valorTipo(hijo_derecho));
             System.out.println("En el AsigNodo");
             System.exit(0);
         }
@@ -376,7 +376,7 @@ public class VisitanteTipo implements Visitor {
 
     public int visit(IdentifierHoja n) {
         if (this.tabla.get(n.getNombre()) == null) {
-            System.out.println("Error : " + n.getNombre() + " Variable no definida");
+            System.out.println("Error :  " + n.getNombre() + " Variable no definida");
             System.out.println("En el IdentifierHoja");
             System.exit(0);
         }
