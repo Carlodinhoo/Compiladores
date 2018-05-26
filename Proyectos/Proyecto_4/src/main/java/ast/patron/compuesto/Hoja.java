@@ -8,8 +8,8 @@ import ast.patron.visitante.*;
 */
 public class Hoja extends Nodo
 {
-    public void accept(Visitor v){
-     	v.visit(this);
+    public int accept(Visitor v){
+     	return v.visit(this);
     }
 
 }

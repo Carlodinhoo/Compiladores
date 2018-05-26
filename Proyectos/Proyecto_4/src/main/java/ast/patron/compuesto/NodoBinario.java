@@ -16,7 +16,7 @@ public class NodoBinario extends Compuesto
 	super();
     }
 
-    public void accept(Visitor v){
-     	v.visit(this);
+    public int accept(Visitor v){
+     	return v.visit(this);
     }
 }

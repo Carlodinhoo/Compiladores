@@ -147,8 +147,8 @@ aux9: factor POR {$$ = new MultNodo($1,null);}
     | aux9 factor DIV {$1.agregaHijoFinal($2); $$ = new DivNodo($1,null);}
 ;
 /* factor: ('+'|'-') factor | power */
-factor: MAS factor {$$ = new AddNodo(null,$1);}
-      | MENOS factor {$$ = new DifNodo(null,$1);}
+factor: MAS factor  {$$ = new PostNodo($2);}
+      | MENOS factor {$$ = new NegNodo($2);}
       | power {$$ = $1;}
 ;
 /* power: atom ['**' factor] */

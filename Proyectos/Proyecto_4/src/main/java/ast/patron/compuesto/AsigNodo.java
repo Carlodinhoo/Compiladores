@@ -8,7 +8,7 @@ public class AsigNodo extends NodoBinario
 	super(l,r);
     }
 
-    public void accept(Visitor v){
-        v.visit(this);
+    public int accept(Visitor v){
+     	return v.visit(this);
     }
 }

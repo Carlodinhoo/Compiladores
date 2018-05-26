@@ -9,11 +9,13 @@ public class Compilador{
 
     Parser parser;
     Nodo raízAST;
-    VisitorPrint v_print;
+    //VisitorPrint v_print;
+    VisitanteTipo v;
 
     Compilador(Reader fuente){
         parser = new Parser(fuente);
-        v_print = new VisitorPrint();
+       // v_print = new VisitorPrint();
+        v= new VisitanteTipo();
     }
 
     public void ConstruyeAST(boolean debug){
@@ -23,7 +25,8 @@ public class Compilador{
     }
 
     public void imprimeAST(){
-        parser.raíz.accept(v_print);
+      // parser.raíz.accept(v_print);
+        parser.raíz.accept(v);
     }
 
     public static void main(String[] args){

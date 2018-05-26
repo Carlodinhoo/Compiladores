@@ -3,39 +3,42 @@ import ast.patron.compuesto.*;
 
 public interface Visitor
 {
-    public void visit(AddNodo n);  //
-    public void visit(MultNodo n);
-    public void visit(DivNodo n);
-    public void visit(DivENodo n);
-    public void visit(ModNodo n);
-    public void visit(PotNodo n);
-    public void visit(AndNodo n);
-    public void visit(OrNodo n);
-    public void visit(NotNodo n);
-    public void visit(MenorNodo n);
-    public void visit(MayorNodo n);
-    public void visit(MenorIgualNodo n);
-    public void visit(MayorIgualNodo n);
-    public void visit(IgualIgualNodo n);
-    public void visit(InNodo n);
-    public void visit(FloatHoja n);
-    public void visit(MasIgualNodo n);
-    public void visit(BoolHoja n);
-    public void visit(WhileNodo n);
-    public void visit(PrintnNodo n);
-    public void visit(StringHoja n);
-    public void visit(DiferenteNodo n);    
-    public void visit(AsigNodo n);
-    public void visit(Compuesto n);
-    public void visit(DifNodo n);  //
-    public void visit(Hoja n);
-    public void visit(IdentifierHoja n);
-    public void visit(IntHoja n);
-    public void visit(Nodo n);
-    public void visit(NodoBinario n);
-    public void visit(NodoStmts n);
-    public void visit(IfNodo n);
-    public void visit(DosPuntosNodo n);
-    public void visit(ElseNodo n);
+    public int visit(AddNodo n);  //
+    public int visit(MultNodo n);
+    public int visit(DivNodo n);
+    public int visit(DivENodo n);
+    public int visit(ModNodo n);
+    public int visit(PotNodo n);
+    public int visit(AndNodo n);
+    public int visit(OrNodo n);
+    public int visit(NotNodo n);
+    public int visit(MenorNodo n);
+    public int visit(MayorNodo n);
+    public int visit(MenorIgualNodo n);
+    public int visit(MayorIgualNodo n);
+    public int visit(IgualIgualNodo n);
+    public int visit(InNodo n);
+    public int visit(FloatHoja n);
+    public int visit(MasIgualNodo n);
+    public int visit(BoolHoja n);
+    public int visit(WhileNodo n);
+    public int visit(PrintnNodo n);
+    public int visit(StringHoja n);
+    public int visit(DiferenteNodo n);    
+    public int visit(AsigNodo n);
+    public int visit(Compuesto n);
+    public int visit(DifNodo n);  //
+    public int visit(Hoja n);
+    public int visit(IdentifierHoja n);
+    public int visit(IntHoja n);
+    public int visit(Nodo n);
+    public int visit(NodoBinario n);
+    public int visit(NodoStmts n);
+    public int visit(IfNodo n);
+    public int visit(DosPuntosNodo n);
+    public int visit(ElseNodo n);
+    public int visit(PostNodo n);
+    public int visit(NegNodo n);
+    
     
 }

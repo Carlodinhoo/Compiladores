@@ -5,6 +5,7 @@
  */
 package ast.patron.visitante;
 
+import ast.patron.compuesto.Variable;
 import java.util.ArrayList;
 
 /**
@@ -12,59 +13,56 @@ import java.util.ArrayList;
  * @author juan_Ricky_Riquín_Canallín
  */
 public class TestTipos {
-
-    ArrayList<String> lista_tipos = new ArrayList();
     
-    //Constructor
-    public TestTipos() {
-        ArrayList lista = lista_tipos;
-        lista.add("Booleano");
-        lista.add("Entero");
-        lista.add("Real");
-        lista.add("Cadena");
-    }
+    //0 bool
+    //1 integer
+    //2 real
+    //3 string
+    //-1 error
+    
+
 
     //Tabla de tipo para la resta
-    private int[][] resta = new int[][]{{-1, -1, -1, -1},
+     int[][] resta = new int[][]{{-1, -1, -1, -1},
     {-1, 1, 2, -1},
     {-1, 2, 2, -1},
     {-1, -1, -1, -1}};
     //Tabla de tipo para la suma
-    private int[][] suma = new int[][]{{-1, -1, -1, -1},
+     int[][] suma = new int[][]{{-1, -1, -1, -1},
     {-1, 1, 2, -1},
     {-1, 2, 2, -1},
     {-1, -1, -1, 3}};
     //Tabla de tipo para la multiplicacion
-    private int[][] multiplicacion = new int[][]{{-1, -1, -1, -1},
+     int[][] multiplicacion = new int[][]{{-1, -1, -1, -1},
     {-1, 1, 2, -1},
     {-1, 2, 2, -1},
     {-1, -1, -1, -1}};
     //Tabla de tipo para la division
-    private int[][] div = new int[][]{{-1, -1, -1, -1},
+     int[][] div = new int[][]{{-1, -1, -1, -1},
     {-1, 2, 2, -1},
     {-1, 2, 2, -1},
     {-1, -1, -1, -1}};
 
     //Tabla de modulo
-    private int[][] mod = new int[][]{{-1, -1, -1, -1},
+     int[][] mod = new int[][]{{-1, -1, -1, -1},
     {-1, 1, 2, -1},
     {-1, 2, 2, -1},
     {-1, -1, -1, -1}};
 
-    private int[][] divEntera = new int[][]{{-1, -1, -1, -1},
+     int[][] divEntera = new int[][]{{-1, -1, -1, -1},
     {-1, 1, 1, -1},
     {-1, 1, 1, -1},
     {-1, -1, -1, -1}
     };
 
-    private int[][] potencia = new int[][]{{-1, -1, -1, -1},
+     int[][] potencia = new int[][]{{-1, -1, -1, -1},
     {-1, 1, 1, -1},
     {-1, 1, 1, -1},
     {-1, -1, -1, -1}
     };
 
     //Tabla para la operación de and
-    private final int[][] and = new int[][]{
+     final int[][] and = new int[][]{
         {0, 1, 2, 3},
         {0, 1, 2, 3},
         {0, 1, 2, 3},
@@ -72,61 +70,81 @@ public class TestTipos {
     };
 
     //Tabla para la operación de or
-    private final int[][] or = new int[][]{
+     final int[][] or = new int[][]{
         {0, 0, 0, 0},
         {1, 1, 1, 1},
         {2, 2, 2, 2},
         {3, 3, 3, 3}
     };
 
+    /*"<" | ">" | "<=" |  ">=" | "==" | "!="  */
+    int condiciones[][] = {{-1, -1, -1, -1},
+        {-1, 0, 0, -1},
+        {-1, 0, 0, -1},
+        {-1, -1, -1, -1}};
+    
+    /*"+=" | "-=" */
+    
+    int asignaciones[][] = {{-1, -1, -1, -1},
+        {-1, 1, 1, -1},
+        {-1, 2, 2, -1},
+        {-1, -1, -1, -1}};
+
+         
+         
+
     //Tabla para la operacion  unaria
     private final int[] unarios = new int[]{1, 1, 2, -1};
-
-    //Metodo donde vemos si son validas las operaciones
-    public String validacion(String op, String left, String right) {
-        
-        String resultado = "";
-        if (lista_tipos.contains(left) && lista_tipos.contains(right)) {
-            int tipo = 0;
-            switch (op) {
-                case "+":
-                    tipo = suma[lista_tipos.indexOf(left)][lista_tipos.indexOf(right)];
-                    break;
-                case "-":
-                    tipo = resta[lista_tipos.indexOf(left)][lista_tipos.indexOf(right)];
-                    break;
-                case "*":
-                    tipo = multiplicacion[lista_tipos.indexOf(left)][lista_tipos.indexOf(right)];
-                    break;
-                case "**":
-                    tipo = potencia[lista_tipos.indexOf(left)][lista_tipos.indexOf(right)];
-                    break;
-                case "/":
-                    tipo = div[lista_tipos.indexOf(left)][lista_tipos.indexOf(right)];
-                    break;
-                case "//":
-                    tipo = divEntera[lista_tipos.indexOf(left)][lista_tipos.indexOf(right)];
-                    break;
-                case "%":
-                    tipo = mod[lista_tipos.indexOf(left)][lista_tipos.indexOf(right)];
-                    break;
-                case "and":
-                    tipo = and[lista_tipos.indexOf(left)][lista_tipos.indexOf(right)];
-                    break;
-                case "or":
-                    tipo = or[lista_tipos.indexOf(left)][lista_tipos.indexOf(right)];
-                    break;
-                default:
-                    break;
-            }
-            if (tipo >= 0) {
-                resultado = lista_tipos.get(tipo);
-            } else {
-                System.exit(1);
-            }
-        }
-        return resultado;
+    private final int[] not = new int[]{0, 0, 0, 0};
+/*Los siguientes metodos se utilizaran para acceder a la posicón de la matriz y obtener que tipos son.*/
+    public int verificaAdd(int i, int j) {
+        return suma[i][j];
+    }
+    
+        public int verificarR(int i, int j) {
+        return resta[i][j];
     }
 
+    public int verificaMult(int i, int j) {
+        return multiplicacion[i][j];
+    }
 
+    public int verificaDiv(int i, int j) {
+        return div[i][j];
+    }
+
+    public int verificaDivEntera(int i, int j) {
+        return divEntera[i][j];
+    }
+
+    public int verificaModulo(int i, int j) {
+        return mod[i][j];
+    }
+
+    public int verificaPotencia(int i, int j) {
+        return potencia[i][j];
+    }
+
+    public int verificaAnd(int i, int j) {
+        return and[i][j];
+    }
+
+    public int verificaOr(int i, int j) {
+        return or[i][j];
+    }
+
+    public int verificaNot(int i) {
+        return not[i];
+    }
+        public int verificaU(int i) {
+        return unarios[i];
+    }
+
+    public int verificaCondicion(int i, int j) {
+        return condiciones[i][j];
+    }
+
+        public int verificaAsignacion(int i, int j) {
+        return asignaciones[i][j];
+    }
 }

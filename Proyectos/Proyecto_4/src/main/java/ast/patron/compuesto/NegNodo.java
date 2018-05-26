@@ -5,16 +5,16 @@
  */
 package ast.patron.compuesto;
 
-import ast.patron.visitante.*;
+import ast.patron.visitante.Visitor;
 
 /**
  *
  * @author hectorsama
  */
-public class MasIgualNodo extends NodoBinario{
+public class NegNodo extends Compuesto{
 
-    public MasIgualNodo(Nodo l, Nodo r){
-	super(l,r);
+    public NegNodo(Nodo l){
+	super(l);
     }
 
     public int accept(Visitor v){

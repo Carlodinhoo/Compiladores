@@ -16,8 +16,8 @@ public class WhileNodo extends NodoBinario{
     public WhileNodo(Nodo l, Nodo r){
         super(l,r);
     }
-    public void accept(Visitor v){
-     	v.visit(this);
+    public int accept(Visitor v){
+     	return v.visit(this);
     }
     
 }

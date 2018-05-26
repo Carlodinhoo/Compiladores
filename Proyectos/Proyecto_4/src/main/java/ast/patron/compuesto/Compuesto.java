@@ -30,8 +30,9 @@ public class Compuesto extends Nodo
 	hijos.agregaHijoFinal(r);
     }
 
-    public void accept(Visitor v){
-     	v.visit(this);
-    }
+    public int accept(Visitor v){
+     	return v.visit(this);
 
+    }
 }
+    
