@@ -42,6 +42,8 @@ import ast.patron.compuesto.PrintnNodo;
 import ast.patron.compuesto.StringHoja;
 import ast.patron.compuesto.WhileNodo;
 import java.util.Iterator;
+import java.io.*;
+import java.util.LinkedList;
 
 /**
  *
@@ -50,19 +52,36 @@ import java.util.Iterator;
 public class VisitanteGenerador implements Visitor {
 
     Registros reg = new Registros();
-    String instrucciones = "main:\n"+".data\n";
+    String instrucciones = "main:\n" + ".data\n"+".text\n";
+    private static String asm="";
     
-    public String Imprime(){
+    public VisitanteGenerador(){
+        
+    }
+    public VisitanteGenerador(String archivo, String cadena){
+        try {
+            FileWriter fw = new FileWriter(archivo.substring(0, archivo.length()-2) + ".asm");
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(cadena);
+            bw.flush();
+            bw.close();
+            System.out.println(cadena);
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+    }
+
+    public String Imprime() {
         return instrucciones;
     }
-    
+
     public int visit(DifNodo n) {
         Nodo hi = n.getPrimerHijo();
         Nodo hd = n.getUltimoHijo();
 
         // Tipo de registro objetivo
         int tipo = n.getType();
-        boolean entero =  tipo ==2 ? false : true;
+        boolean entero = tipo == 2 ? false : true;
 
         String objetivo = reg.getObjetivo(entero);
         String[] siguientes = reg.getNsiguientes(2, entero);
@@ -76,11 +95,7 @@ public class VisitanteGenerador implements Visitor {
         hd.accept(this);
 
         String opcode;
-        if (tipo == 2) {
-            opcode = "sub.s";
-        } else {
-            opcode = "sub";
-        }
+        opcode = tipo == 2 ? "sub.s" : "sub";
 
         System.out.println(opcode + " " + objetivo + ", "
                 + siguientes[0] + ", " + siguientes[1]);
@@ -107,11 +122,7 @@ public class VisitanteGenerador implements Visitor {
         hd.accept(this);
 
         String opcode;
-        if (tipo == 2) {
-            opcode = "add.s";
-        } else {
-            opcode = "add";
-        }
+        opcode =  tipo==2 ? "add.s" : "add";
 
         System.out.println(opcode + " " + objetivo + ", "
                 + siguientes[0] + ", " + siguientes[1]);
@@ -139,11 +150,7 @@ public class VisitanteGenerador implements Visitor {
         hd.accept(this);
 
         String opcode;
-        if (tipo == 2) {
-            opcode = "mul.s";
-        } else {
-            opcode = "mul";
-        }
+        opcode =  tipo==2 ? "mul.s" : "mul";
 
         System.out.println(opcode + " " + objetivo + ", "
                 + siguientes[0] + ", " + siguientes[1]);
@@ -170,11 +177,7 @@ public class VisitanteGenerador implements Visitor {
         hd.accept(this);
 
         String opcode;
-        if (tipo == 2) {
-            opcode = "div.s";
-        } else {
-            opcode = "div";
-        }
+        opcode =  tipo==2 ? "div.s" : "div";
 
         System.out.println(opcode + " " + objetivo + ", "
                 + siguientes[0] + ", " + siguientes[1]);
@@ -256,18 +259,16 @@ public class VisitanteGenerador implements Visitor {
         boolean entero =  tipo ==2 ? false : true;
 
         String objetivo = reg.getObjetivo(entero);
-        String[] siguientes = reg.getNsiguientes(2, entero);
+        String[] siguientes = reg.getNsiguientes(1, entero);
 
-        // Genero el código del subárbol izquiero
+        // Genero el código del subárbol derecho
         reg.setObjetivo(siguientes[0], entero);
-        hi.accept(this);
+        hd.accept(this);
 
         if (entero) {
-            instrucciones += "move $a0 "+objetivo;
+            instrucciones += "move $a0, "+ objetivo+"\n li $v0, 1\n" + "syscall\n";
         } else {
-            instrucciones += "move $f12 "+ objetivo+
-                    " li $v0 1" + 
-                    "syscall";
+            instrucciones += "move $f12, "+ objetivo+"\n li $v0, 1\n" + "syscall\n";
             
         }
         return 0; //To change body of generated methods, choose Tools | Templates.
@@ -282,10 +283,6 @@ public class VisitanteGenerador implements Visitor {
     }
 
     public int visit(AsigNodo n) {
-        String hijo_izq = n.getPrimerHijo().getNombre();
-        Nodo hijo_der = n.getUltimoHijo();
-        //INCOMPLETO
-        
         return 0; //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -298,6 +295,8 @@ public class VisitanteGenerador implements Visitor {
     }
 
     public int visit(IntHoja n) {
+        
+        instrucciones += "li "+reg.getObjetivo(true)+","+n.getValor().ival+"\n";
         return 0; //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -334,7 +333,9 @@ public class VisitanteGenerador implements Visitor {
     }
     
     public int visit(Compuesto n){
-        
+        for(Nodo nodo : n.getHijos().getAll()){
+            nodo.accept(this);
+        }
         return 0;
     }
 
