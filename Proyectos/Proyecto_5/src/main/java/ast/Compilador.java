@@ -12,6 +12,8 @@ public class Compilador{
     //VisitorPrint v_print;
     VisitanteTipo v;
     VisitanteGenerador vg;
+    VisitanteGenerador vg2;
+    static String archivo;
     
     Compilador(Reader fuente){
         parser = new Parser(fuente);
@@ -30,11 +32,14 @@ public class Compilador{
       // parser.raíz.accept(v_print);
         parser.raíz.accept(v);
         parser.raíz.accept(vg);
-        System.out.print(vg.Imprime());
+        String st = vg.Imprime();
+        vg2 = new VisitanteGenerador(archivo,st);
+        
+        
     }
 
     public static void main(String[] args){
-            String archivo = "src/main/resources/test.p";
+        archivo = "src/main/resources/test.p";
         try{
             Reader a = new FileReader(archivo);
             Compilador c  = new Compilador(a);
